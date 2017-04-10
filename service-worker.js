@@ -15,23 +15,23 @@
 var dataCacheName = 'weatherData-v1';
 var cacheName = 'weatherPWA-step-8-1';
 var filesToCache = [
-  '/ohiwebapp/',
-  '/ohiwebapp/index.html',
-  '/ohiwebapp/scripts/app.js',
-  '/ohiwebapp/styles/inline.css',
-  '/ohiwebapp/images/clear.png',
-  '/ohiwebapp/images/cloudy-scattered-showers.png',
-  '/ohiwebapp/images/cloudy.png',
-  '/ohiwebapp/images/fog.png',
-  '/ohiwebapp/images/ic_add_white_24px.svg',
-  '/ohiwebapp/images/ic_refresh_white_24px.svg',
-  '/ohiwebapp/images/partly-cloudy.png',
-  '/ohiwebapp/images/rain.png',
-  '/ohiwebapp/images/scattered-showers.png',
-  '/ohiwebapp/images/sleet.png',
-  '/ohiwebapp/images/snow.png',
-  '/ohiwebapp/images/thunderstorm.png',
-  '/ohiwebapp/images/wind.png'
+  '/Ohiwebapp/',
+  '/Ohiwebapp/index.html',
+  '/Ohiwebapp/scripts/app.js',
+  '/Ohiwebapp/styles/inline.css',
+  '/Ohiwebapp/images/clear.png',
+  '/Ohiwebapp/images/cloudy-scattered-showers.png',
+  '/Ohiwebapp/images/cloudy.png',
+  '/Ohiwebapp/images/fog.png',
+  '/Ohiwebapp/images/ic_add_white_24px.svg',
+  '/Ohiwebapp/images/ic_refresh_white_24px.svg',
+  '/Ohiwebapp/images/partly-cloudy.png',
+  '/Ohiwebapp/images/rain.png',
+  '/Ohiwebapp/images/scattered-showers.png',
+  '/Ohiwebapp/images/sleet.png',
+  '/Ohiwebapp/images/snow.png',
+  '/Ohiwebapp/images/thunderstorm.png',
+  '/Ohiwebapp/images/wind.png'
 ];
 
 self.addEventListener('install', function(e) {

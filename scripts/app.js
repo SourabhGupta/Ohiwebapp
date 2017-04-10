@@ -364,7 +364,7 @@
   // TODO add service worker code here
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker
-             .register('/ohiwebapp/service-worker.js', {scope: "/ohiwebapp/"})
+             .register('/Ohiwebapp/service-worker.js', {scope: "/Ohiwebapp/"})
              .then(function() { console.log('Service Worker Registered'); });
   }
 })();
