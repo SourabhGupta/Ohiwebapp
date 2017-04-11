@@ -101,3 +101,62 @@ self.addEventListener('fetch', function(e) {
     );
   }
 });
+
+
+
+
+var applicationServerPublicKey = 'BHqo38nEFcN5V0RrKuudWXDVDzG36FObCPopCss9dmg4JJo9yeRTGLmYfbPa_ZUZoRPIjsb_t03eFBxKi1Bv80Q';
+
+function urlB64ToUint8Array(base64String) {
+  var padding = '='.repeat((4 - base64String.length % 4) % 4);
+  var base64 = (base64String + padding)
+    .replace(/\-/g, '+')
+    .replace(/_/g, '/');
+
+  var rawData = window.atob(base64);
+  var outputArray = new Uint8Array(rawData.length);
+
+  for (let i = 0; i < rawData.length; ++i) {
+    outputArray[i] = rawData.charCodeAt(i);
+  }
+  return outputArray;
+}
+
+self.addEventListener('push', function(event) {
+  console.log('[Service Worker] Push Received.');
+  console.log(`[Service Worker] Push had this data: "${event.data.text()}"`);
+
+  var title = 'OHI Survey';
+  var options = {
+    body: "Yay its working",
+    icon: 'images/icon.png',
+    badge: 'images/badge.png'
+  };
+
+  event.waitUntil(self.registration.showNotification(title, options));
+});
+
+self.addEventListener('notificationclick', function(event) {
+  console.log('[Service Worker] Notification click Received.');
+
+  event.notification.close();
+
+  event.waitUntil(
+    clients.openWindow('http://127.0.0.1:8080/')
+  );
+});
+
+self.addEventListener('pushsubscriptionchange', function(event) {
+  console.log('[Service Worker]: \'pushsubscriptionchange\' event fired.');
+  var applicationServerKey = urlB64ToUint8Array(applicationServerPublicKey);
+  event.waitUntil(
+    self.registration.pushManager.subscribe({
+      userVisibleOnly: true,
+      applicationServerKey: applicationServerKey
+    })
+    .then(function(newSubscription) {
+      // TODO: Send to application server
+      console.log('[Service Worker] New subscription: ', newSubscription);
+    })
+  );
+});
