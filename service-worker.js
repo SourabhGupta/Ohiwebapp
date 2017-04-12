@@ -128,7 +128,7 @@ self.addEventListener('push', function(event) {
 
   var title = 'OHI Survey';
   var options = {
-    body: "Yay its working",
+    body: `"${event.data.text()}"`,
     icon: 'images/icon.png',
     badge: 'images/badge.png'
   };
@@ -142,7 +142,7 @@ self.addEventListener('notificationclick', function(event) {
   event.notification.close();
 
   event.waitUntil(
-    clients.openWindow('http://127.0.0.1:8080/')
+    clients.openWindow('https://sourabhgupta.github.io/Ohiwebapp/index.html')
   );
 });
 
